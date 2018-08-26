@@ -1,0 +1,83 @@
+<p id="notice"></p>
+<div class='row'>
+<div class='col-xs-3'>
+
+
+<h2>User info</h2>
+<table class='table'>
+<tr><img class="attachment user profile_image" src="/attachments/f2c9223aabf32e83413d10d5f5cc6f39ab0261a2/store/fill/100/100/dcfc7834c9afcdad190fbb306a841c26a4d2b9077490585d4daf86fead1e/profile_image" alt="Profile image" /></tr> 
+<tr>
+<th>name</th>
+<th></th>
+</tr>
+<tr>
+<th>introduction</th>
+<th></th>
+</tr>
+</table>
+
+
+
+<div class='row'>
+<a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_282" href="/users/282/edit"></a>
+</div>
+
+<h2>New book</h2>
+<form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="GY+lxgbOqdc+aGiNlBBjKlRM9qc2b5+w1BLk7PAVEOB4eJAXUa5TMLp5OYGXlm7O6A4n30iDGb4rV6dFXbWBmQ==" />
+<div class="field row">
+<label for="book_title">Title</label>
+<input class="col-xs-12 book_title" type="text" name="book[title]" id="book_title" />
+</div>
+
+<div class="field row">
+<label for="book_opinion">Opinion</label>
+<textarea class="col-xs-12 book_body" name="book[body]" id="book_body">
+</textarea>
+</div>
+
+<div class="actions row">
+<input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book" />
+</div>
+</form>
+</div>
+
+
+
+<div class='col-xs-9'>
+<h2>Books</h2>
+
+<table class='table table-hover table-inverse'>
+<thead>
+<tr> 
+<th></th>
+<th>Title</th>
+<th>Opinion</th>
+<th colspan="3"></th>
+</tr>
+</thead>
+
+<tbody>
+
+
+<tr>
+<td>
+<a href="/users/1">
+<img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg" alt="No image icon" /></a>
+</td>
+
+<td>
+<a class="book_1" href="/books/1">test1</a>
+</td>
+<td>本文1</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
