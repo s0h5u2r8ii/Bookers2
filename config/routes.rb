@@ -5,8 +5,7 @@ devise_for :users
 resources :users, only: [:show,:index,:edit,:create,:update]
 resources :books, only: [:show,:index,:edit,:create,:destroy,:update]
 
-root 'users#show'
+root 'books#top'
 
-get "/about" => "book#about"
-get "/top" => "book#top"
+get "/about" => "books#about"
 end

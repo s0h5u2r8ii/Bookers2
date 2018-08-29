@@ -1,87 +1,104 @@
-<body style="">
+<% if flash[:notice] %>
+  <div class="flash" style="color: green;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 
-    <div class="body">
-      <div class="container">
-        <div class="row">
-  <div class="col-xs-3">
-    <h2>User info</h2>
-    <img class="attachment user profile_image" alt="Profile image">
-    <table class="table">
-      <tbody><tr></tr>
-      <tr>
-        <th>name</th>
-      </tr>
-      <tr>
-        <th>introduction</th>
-      </tr>
-</tbody></table>
+<p id="notice"></p>
+<div class='row'>
+<div class='col-xs-3'>
 
-<div class="row">
-  <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_282" href="/users/edit"></a>
+
+<h2>User info</h2>
+<table class='table'>
+
+<%= attachment_image_tag @aaa.user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+
+<tr>
+<th>name</th>
+<th><%= @aaa.user.name %></th>
+</tr>
+<tr>
+<th>introduction</th>
+<th><%= @aaa.user.introduction %></th>
+</tr>
+</table>
+
+
+
+<div class='row'>
+<%= link_to "", edit_user_path(current_user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %>
 </div>
 
-    <h2>New book</h2>
-  <div class="field row">
-    <% if @book.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-    <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-    </div>
-  </div>
+<h2>New book</h2>
+
+<%= form_for(@book) do |f| %>
+
+<% if @book.errors.any? %>
+        <%= @book.errors.count %>件のエラーが発生しました
+        <% @book.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
     <% end %>
-    <%= form_for(@book) do |f| %>
-    <div class="field row">
-    <h4>Title</h4>
-    <%= f.text_field :title, class: "book_title" %>
-  </div>
+
+  <div class="field row">
+     <label for="book_title">Title</label><br>
+     <%= f.text_field :title, class: "col-xs-12 book_title"  %>
   </div>
 
   <div class="field row">
-    <h4>Opinion</h4>
-    <%= f.text_area :opinion, class: "book_body" %>
+   <label for="book_opinion">Opinion</label><br>
+   <%= f.text_area :opinion, class: "col-xs-12 book_body" %>
   </div>
 
   <div class="actions row">
-    <h4></h4>
-    <%= f.submit 'Create Book' %>
-</div>
+    <%= f.submit 'Create Book', class: "btn btn-primary col-xs-12" %>
+  </div>
+
   <% end %>
 
-  </div>
-
-  <div class="col-xs-9">
-    <h2>Book detail</h2>
-
-    <table class="table table-hover table-inverse">
-  <thead>
-    <tr>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @books.each do |book|%>
-      <tr>
-        <td><%= book.title %></td>
-        <%= link_to "", book_path(book), class: "book_#{id}" %>
-       <td><%= book.opinion %></td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-  </div>
 </div>
-      </div>
-    </div>
-
-
-      </div>
-    </div>
 
 
 
+<div class='col-xs-9'>
+<h2>Book detail</h2>
 
-</body>
+<table class='table table-hover table-inverse'>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td>
+      <%= link_to user_path(@aaa.user.id) do %>
+        <%= attachment_image_tag @aaa.user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_mini.jpg" %><br>
+        <%= @aaa.user.name %>
+      <% end %>
+    </td>
+    <td><%= link_to @aaa.title, book_path(@aaa), class: "book_#{@book.id}" %></td>
+    <td><%= @aaa.opinion %></td>
+    <% if @aaa.user.id == current_user.id %>
+
+    <td>
+    <%= link_to "Edit", edit_book_path(@aaa), class: "btn-sm btn-success edit_book_#{@book.id}" %>
+    </td>
+
+    <td>
+    <%= link_to "Destroy", book_path(@aaa), method: :delete, class: "btn-sm btn-danger destroy_book_#{@book.id}","data-confirm" => "本当に削除しますか？" %>
+    </td>
+
+    <% end %>
+  </tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
