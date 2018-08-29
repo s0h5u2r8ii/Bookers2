@@ -86,11 +86,11 @@
     <% if @aaa.user.id == current_user.id %>
 
     <td>
-    <%= link_to "Edit", edit_book_path(@aaa), class: "btn-sm btn-success edit_book_#{@book.id}" %>
+    <%= link_to "Edit", edit_book_path(@aaa), class: "btn-sm btn-success edit_book_#{@aaa.id}" %>
     </td>
 
     <td>
-    <%= link_to "Destroy", book_path(@aaa), method: :delete, class: "btn-sm btn-danger destroy_book_#{@book.id}","data-confirm" => "本当に削除しますか？" %>
+    <%= link_to "Destroy", book_path(@aaa), method: :delete, class: "btn-sm btn-danger destroy_book_#{@aaa.id}","data-confirm" => "本当に削除しますか？" %>
     </td>
 
     <% end %>
